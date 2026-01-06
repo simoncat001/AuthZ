@@ -54,9 +54,13 @@ CREATE TABLE `group` (
 
 `GET /health`
 
+用于服务探活，返回状态。
+
 ### 权限检查
 
 `POST /authz/check`
+
+用于判断用户是否拥有指定范围内的管理员角色。
 
 请求体：
 
@@ -81,6 +85,8 @@ CREATE TABLE `group` (
 
 `POST /authz/roles`
 
+为用户授予单个管理员角色，包含层级授权校验。
+
 请求体：
 
 ```json
@@ -102,6 +108,8 @@ CREATE TABLE `group` (
 ### 批量授权
 
 `POST /authz/roles/batch`
+
+为同一用户批量授予多个管理员角色，包含层级授权校验。
 
 请求体：
 
@@ -128,6 +136,8 @@ CREATE TABLE `group` (
 
 `DELETE /authz/roles`
 
+移除用户在指定范围内的管理员角色。
+
 请求体：
 
 ```json
@@ -142,6 +152,8 @@ CREATE TABLE `group` (
 ### 查询授权
 
 `GET /authz/roles`
+
+按条件筛选管理员角色分配记录。
 
 查询参数：`user_id`, `role`, `scope_type`, `scope_id`
 
@@ -166,6 +178,8 @@ CREATE TABLE `group` (
 
 `GET /authz/users/{user_id}/groups`
 
+返回用户管理的小组范围列表。
+
 响应：
 
 ```json
@@ -181,4 +195,8 @@ CREATE TABLE `group` (
 
 `GET /authz/users/{user_id}/projects`
 
+返回用户管理的项目范围列表。
+
 `GET /authz/users/{user_id}/departments`
+
+返回用户管理的部门范围列表。
